@@ -1,3 +1,7 @@
+CREATE DATABASE cus_order;
+
+USE cus_order;
+
 CREATE TABLE customers
 (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -7,12 +11,12 @@ CREATE TABLE customers
 );
 
 CREATE TABLE orders(
-    id INT AUTO_INCREMENT NOT NULL,
-    order DATE NOT NULL,
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    order_date DATE NOT NULL,
     amount DECIMAL(8, 2) NOT NULL,
     customer_id INT,
     FOREIGN KEY(customer_id) REFERENCES customers(id)
-)
+);
 
 
 INSERT INTO customers(fname, lname, email)
@@ -24,7 +28,7 @@ VALUES
 ("Beete", "Davis", "bette@gmail.com");
 
 
-INERT INTO orders
+INSERT INTO orders(order_date, amount, customer_id)
 VALUES
 ("2016/02/10", 99.99, 1),
 ("2017/11/11", 35.50, 1),
@@ -48,10 +52,10 @@ FROM orders
 WHERE customer_id = 
     (SELECT id 
     FROM customers 
-    WHERE CONCAT(fname, " ", lname) = "Boy George")
+    WHERE CONCAT(fname, " ", lname) = "Boy George");
 --A bit cumbersome
 
-SELECT * FROM customers, orders
+SELECT * FROM customers, orders;
 --Will result in CROSS JOIN
 --Meaningless and Useless without a predicate/condition
 
@@ -73,17 +77,18 @@ WHERE customers.id = orders.customer_id;
 --The predicate is mostly an id matching condition
 SELECT * FROM customers 
 JOIN orders
-ON customer.id = orders.customer_id;
+ON customers.id = orders.customer_id;
 
 
 SELECT CONCAT(fname, " ", lname) AS "Name", order_date, amount
+FROM customers
 JOIN orders
-ON customer.id = orders.customer_id;
+ON customers.id = orders.customer_id;
 
 SELECT CONCAT(fname, " ", lname) AS "Spender", SUM(amount) AS "total_spent"
 FROM customers
 JOIN orders  
-ON orders.customer_id = customer.id
+ON orders.customer_id = customers.id
 GROUP BY customer_id
 ORDER BY total_spent DESC;
 
@@ -118,6 +123,10 @@ ORDER BY total_spent DESC;
 
 --RIGHT JOIN
 --Same as left JOIN
+
+SELECT * FROM orders
+RIGHT JOIN customers
+    ON customers.id = orders.customer_id;
 
 /*
 JOIN Excercise
