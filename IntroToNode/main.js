@@ -5,7 +5,7 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
     host : "localhost",
     user : "root",
-    password : "phoenix",
+    password : "password",
     database : "join_us"
 });
 
@@ -95,7 +95,4 @@ connection.end();
 
 
 // NOTE : 
-// the format of date given by the faker
-// is not comatible with the mySQL format
-// but the mySQL library does the intermediate conversion 
-// so the insertion is successful
+// the format of 
