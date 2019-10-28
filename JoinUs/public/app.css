@@ -1,0 +1,64 @@
+body{
+    margin-top: 100px;
+    text-align: center;
+    text-shadow: 0.05rem .1rem rgba(0, 0, 0, .5);
+    font-family: "Roboto", sans-serif;
+    color: rbg(66, 69, 86);
+    background-image: url("http://i.imgur.com/BJP2Q1j.jpg");
+    background-size: cover;
+}
+
+h1{
+    margin: 0;
+    font-weight: 100;
+    font-size: 400px;
+    line-height:300px;
+}
+
+p{
+    font-weight: 100;
+    margin: 0;
+    font-size: 50px;
+}
+
+
+.flex-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+.form{
+    line-height: 1.5;
+    border: none;
+    border-bottom: 3px solid #ebebeb;
+    margin-top: 100px;
+    width: 700px;
+    font-size: 2.9em;
+    color: white;
+    padding: 5px 10px;
+    background: transparent;
+}
+
+button{
+    line-height: 2.0;
+    border: none;
+    border: 3px solid white;
+    font-size: 1.9em;
+    color: rgb(66, 96, 86);
+    padding: 5px 30px;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    opacity: 0.8;
+}
+
+
+::-webkit-input-placeholder{
+    color: rgba(255, 255, 255, 0.8);
+}
+
+input[type = text]:focus{
+    outline: none;
+}
